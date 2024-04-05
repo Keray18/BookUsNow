@@ -1,77 +1,55 @@
-import { Box, Card, CardBody, CardFooter, CardHeader, Flex, HStack, SimpleGrid, Text } from '@chakra-ui/react'
+import { Box, Card, CardBody, CardFooter, Flex, HStack, SimpleGrid, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
-import BgBanner from './BgBanner'
+import { TiLocation } from "react-icons/ti";
+import { WiDegrees } from "react-icons/wi";
+import '../globals.css'
 
-const CardComponent = () => {
-    const [getData, setGetData] = useState([])
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-
-                const url = process.env.NEXT_PUBLIC_URL
-       
-                const response = await fetch(url) 
-                if (response.ok) {
-                    const data = await response.json()
-                    // console.log(data.events);
-                    setGetData(data.events)
-                    // console.log(getData);
-                } else {
-                    console.error("Failed to fetch.")
-                }
-            } catch (err) {
-                console.error("Error: ", err)
-            }
-        }
-        fetchData()
-    }, [getData])
-
-    const formatDate = (dateString) => {
-        const options = { day: 'numeric', month: 'long', year: 'numeric' };
-        const formattedDate = new Date(dateString).toLocaleDateString('en-US', options);
-        return formattedDate;
-    }
-
-    const formatDistance = (distance) => {
-        const formattedDistance = Math.round(distance)
-    }
+const CardComponent = (props) => {
     
     return (
-        <SimpleGrid textColor="white" spacing={10} minChildWidth="300px">
-            {getData.length > 0 && getData.map((event, index) => (
-                <Card key={index}>
-                    <BgBanner 
-                        banner={'https://lh3.googleusercontent.com/drive-viewer/AKGpihaV0fAycpHmFwAggb0P3kdHPLC0yMH9KVXQMcjSBxDaptjtH06CnkR-FIyClVFFK8VZ-PILVqbNDe-I1ez-Sz3_TuIg1VQGmw=s1600-rw-v1'}
-                    />
-                    <Flex>
-                        <CardHeader>
-                            <Text>{event.eventName}</Text>
-                        </CardHeader>
 
-                        <CardBody>
-                            {formatDate(event.date)}
-                        </CardBody>
+            <Card borderRadius="0.5rem" h="50vh" w="80%" position="relative" overflow="hidden">
+                <Box
+                    position="absolute"
+                    top="0"
+                    left="0"
+                    width="100%"
+                    height="100%"
+                    zIndex="-1"
+                    style={{
+                        backgroundImage: `url(https://lh3.googleusercontent.com/drive-viewer/AKGpihaV0fAycpHmFwAggb0P3kdHPLC0yMH9KVXQMcjSBxDaptjtH06CnkR-FIyClVFFK8VZ-PILVqbNDe-I1ez-Sz3_TuIg1VQGmw=s1600-rw-v1)`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                            // filter: 'blur(5px)',
+                        transform: 'scale(1.2)'
+                    }}
+                />
+                
+                {/* Just for spacing  */}
+                <Flex h="100%"></Flex>
+
+                <Flex>
+                    <Flex my="0.2rem" alignItems="center" justify="center">
+                        <Text w="40%" mx="1.2rem" fontSize="0.8rem" fontWeight={400}>{props.eventName}</Text>
+                        <Text fontSize="0.7rem">{props.date}</Text>
                     </Flex>
+                </Flex>
 
-                    <Flex>
-                        <CardFooter>
-                            <HStack>
-                                <Box>
-                                    {event.cityName}
-                                </Box>
+                <Flex alignItems="center" justify="center">
+                    <Flex mx="1rem" fontSize="0.8rem" alignItems="center" >
+                        <TiLocation />
+                        <Text>{props.cityName}</Text>
+                                
 
-                                <Flex>
-                                    <Text>{event.weather}</Text>
-                                    <Text>{formatDistance(event.distanceKm)}</Text>
-                                </Flex>
-                            </HStack>
-                        </CardFooter>
-        
                     </Flex>
-                </Card>
-            ))}
-        </SimpleGrid>
+                    <Flex fontSize="0.7rem" alignItems="center">
+                        <Text>{props.weather}</Text>
+                        <Text mx="0.1rem">|</Text>
+                        <Text>{props.distance}</Text>
+                        <Text mx="0.1rem">Km</Text>
+                    </Flex>
+                </Flex>
+            </Card>
     )
 }
 

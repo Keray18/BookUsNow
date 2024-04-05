@@ -9,14 +9,12 @@ const BgBanner = (props) => {
   return (
 
     <Image 
-        src={props.banner} 
+        src="https://lh3.googleusercontent.com/drive-viewer/AKGpihaV0fAycpHmFwAggb0P3kdHPLC0yMH9KVXQMcjSBxDaptjtH06CnkR-FIyClVFFK8VZ-PILVqbNDe-I1ez-Sz3_TuIg1VQGmw=s1600-rw-v1"
         alt='Image'
         zIndex={-1}
         position= "relative"
         filter= "brightness(0.6)"
-        width={100}
-        height={100}
-
+        width="100%"
     />
 
   )

@@ -8,11 +8,17 @@ body {
   font-weight: 300;
   font-style: normal;
   background-color: #ffffff;
+  overflow-x: hidden;
   
 }
 
 input {
   outline: none;
   padding: 0 10px 0 10px;
+}
+
+
+.back {
+  background-image: url("https://lh3.googleusercontent.com/drive-viewer/AKGpihaV0fAycpHmFwAggb0P3kdHPLC0yMH9KVXQMcjSBxDaptjtH06CnkR-FIyClVFFK8VZ-PILVqbNDe-I1ez-Sz3_TuIg1VQGmw=s1600-rw-v1");
 }
 
