@@ -8,6 +8,7 @@ import Banner from '../../public/Banner.svg';
 import CardComponent from '../components/CardComponent';
 import { Image } from '@chakra-ui/next-js';
 import CardCarousel from '../components/CardCarousel';
+import Upcoming from './Upcoming';
 
 const HomePage = () => {
   return (
@@ -58,6 +59,7 @@ const HomePage = () => {
                 
             </Flex>
         </Flex>
+        
     </Box>
   )
 }
