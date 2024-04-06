@@ -29,20 +29,21 @@ const CardsUpcoming = () => {
 
     return (
         <Box justifyContent="center">
-            <SimpleGrid columns={getData.length > 0 ? calculateColumns(getData.length) : 1} spacing={10}>
+            <SimpleGrid spacingX={30} spacingY={70} columns={getData.length > 0 ? calculateColumns(getData.length) : 1} spacing={10}>
                 {getData.length > 0 && getData.map((event, index) => (
-                    <Card key={index} m={2} width="300px">
+                    <Card border="1rem solid white" h="35vh" borderRadius="10px" boxShadow="0rem 0.2rem 0.5rem 0.1rem" key={index} m={2} width="300px">
                         <Box
                             position="absolute"
                             top="0"
                             left="0"
                             width="100%"
-                            height="100%"
+                            height="25vh"
                             zIndex="-1"
                             style={{
                                 backgroundImage: `url(https://lh3.googleusercontent.com/drive-viewer/AKGpihYum0lcpiB0LhfR07-pf1yf4jQ2PYYXRsTxD5CwYB4DQJsn0qU5U6lEMwYJ1xAO5UQgiMpObThdvQP-DqlKbMR0SHh-C1tlUZ8=s1600-v0)`,
                                 backgroundSize: 'cover',
                                 backgroundPosition: 'center',
+                                transform: 'scale(1.1)'
                             }}
                         />
                         <Flex h="100%"></Flex>
